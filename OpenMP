@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <omp.h>
+ int main(int argc, char* argv[])
+ {
+   #pragma omp parallel
+     printf("Hello Om, I am thread = %d\n", omp_get_thread_num()) ;
+ }
+----------------------------------------------------------------------------
+compiler :        $ gcc -fopenmp hello_parallel.c -o hello_parallel
+explicit thread : $ export OMP_NUM_THREADS=2
+run program :     $ ./hello_parallel
+----------------------------------------------------------------------------
+OUTPUT :
+          Hello Om, I am thread = 0
+          Hello Om, I am thread = 1
